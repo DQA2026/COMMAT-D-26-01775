@@ -61,7 +61,7 @@ The primary quantity analyzed in this work is the shear stress component:
 
 # 4. ASD Analysis
 
-The accumulated shear displacement (ASD) is defined as the integrated displacement along the shear direction (`x`) expressed as a function of the sample height (`y`).
+The accumulated shear displacement (ASD) is defined as the integrated displacement along the shear direction ($x$) expressed as a function of the sample height ($y$).
 
 ASD serves as the primary variable throughout the present analysis.
 
