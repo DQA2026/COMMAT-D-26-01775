@@ -1,5 +1,4 @@
-# Supplementary Materials for  \\
-*Anomalous strain-rate enhancement of grain boundary sliding triggered by phonon-drag-induced dislocation deficit*
+# Supplementary Materials for *Anomalous strain-rate enhancement of grain boundary sliding triggered by phonon-drag-induced dislocation deficit*
 
 ---
 
