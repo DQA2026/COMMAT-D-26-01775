@@ -1,0 +1,143 @@
+# =============================================================================
+# LAMMPS Input Script: Polycrystalline Aluminum Shear Deformation (Re-edited for Better Readability)
+# =============================================================================
+# Description: Molecular dynamics simulation of shear deformation in 
+#              bicrystalline aluminum using EAM potential at 750 K.
+# Author: Qi-an Ding
+# Date Generated: Oct-15-2025
+# =============================================================================
+#
+# Simulation Protocol:
+#   1. Energy minimization of initial polycrystalline structure
+#   2. Equilibration under NPT ensemble (500,000 steps)
+#   3. Shear deformation under NVT ensemble (5,400,000 steps)
+#
+# Output Files:
+#   - data_a.*.lammpstrj : Equilibration trajectories (every 125,000 steps)
+#   - data_b.*.lammpstrj : Deformation trajectories (every 30,000 steps)
+#   - Stress_Strain_a.csv : Stress components during equilibration
+#   - Stress_Strain_b.csv : Stress components during deformation
+#
+# =============================================================================
+# Simulation Parameters
+# =============================================================================
+
+# --- Thermodynamic Conditions ---
+variable   my_temp    equal 750.0       # Temperature (K)
+variable   rate_ratio equal 2.00        # Shear rate multiplier
+
+# --- Deformation Parameters ---
+variable   srate      equal -1.0e8      # Base shear rate (1/s)
+variable   cal_ts     equal 0.001       # Timestep (ps)
+
+# =============================================================================
+# System Initialization
+# =============================================================================
+
+units              metal
+dimension          3
+boundary           p p p
+atom_style         atomic
+
+# --- Read initial polycrystalline structure ---
+read_data          ../../../poly_crys_lmp.dat
+change_box         all triclinic
+lattice            fcc 4.05
+
+# --- Interatomic Potential: EAM (Mendelev 2008) ---
+pair_style         eam/alloy
+pair_coeff         * * ../../../Al_Mendelev_2008.eam.alloy Al
+
+# =============================================================================
+# Stage 0: Energy Minimization
+# =============================================================================
+
+minimize           1.0e-7 1.0e-7 10000 10000
+
+# --- Initialize velocities at target temperature ---
+velocity           all create ${my_temp} 2025101517 mom yes rot no
+
+timestep           ${cal_ts}
+
+# =============================================================================
+# Computation Setup
+# =============================================================================
+
+# --- Thermodynamic computations ---
+compute            myT      all temp
+compute            myP      all pressure myT
+
+# --- Structural analysis ---
+compute            csym     all centro/atom fcc
+compute            peratom  all pe/atom
+compute            ke_atom  all ke/atom
+compute            displ    all displace/atom
+
+# --- Stress components extraction ---
+variable          mpxx     equal c_myP[1]    # σ_xx
+variable          mpyy     equal c_myP[2]    # σ_yy
+variable          mpzz     equal c_myP[3]    # σ_zz
+variable          mpxy     equal c_myP[4]    # σ_xy
+variable          mpxz     equal c_myP[5]    # σ_xz
+variable          mpyz     equal c_myP[6]    # σ_yz
+
+# =============================================================================
+# Stage 1: NPT Equilibration (500,000 steps)
+# =============================================================================
+
+# --- Barostat: zero pressure along all axes ---
+fix               equil    all npt temp ${my_temp} ${my_temp} 0.1 \
+                              x 0.0 0.0 1.0 \
+                              y 0.0 0.0 1.0 \
+                              z 0.0 0.0 1.0
+
+# --- Trajectory output ---
+dump              dump_a   all custom 125000 data/data_a.*.lammpstrj \
+                              id type x y z \
+                              c_csym c_peratom c_ke_atom \
+                              c_displ[1] c_displ[2] c_displ[3] c_displ[4]
+dump_modify       dump_a   sort id
+
+# --- Stress output ---
+fix               stress_a all print 1000 "${mpxx},${mpyy},${mpzz},${mpxy},${mpxz},${mpyz}" \
+                              file Stress_Strain_a.csv \
+                              title "pxx,pyy,pzz,pxy,pxz,pyz"
+
+run               500000
+
+# --- Cleanup equilibration stage ---
+undump            dump_a
+unfix             stress_a
+unfix             equil
+
+# =============================================================================
+# Stage 2: Shear Deformation (5,400,000 steps, strain = 1.08)
+# =============================================================================
+
+# --- Calculate scaled shear rate ---
+variable          srate1   equal "2.00 * v_srate / 1.0e12"
+print             "Applied shear rate: ${srate1} (1/ps)"
+
+# --- Apply shear deformation ---
+fix               shear    all deform 1 xy erate ${srate1} units box remap x
+fix               thermo   all nvt temp ${my_temp} ${my_temp} 0.1
+
+# --- Trajectory output ---
+dump              dump_b   all custom 30000 data/data_b.*.lammpstrj \
+                              id type x y z \
+                              c_csym c_peratom c_ke_atom \
+                              c_displ[1] c_displ[2] c_displ[3] c_displ[4]
+dump_modify       dump_b   sort id
+
+# --- Stress output ---
+fix               stress_b all print 1800 "${mpxx},${mpyy},${mpzz},${mpxy},${mpxz},${mpyz}" \
+                              file Stress_Strain_b.csv \
+                              title "pxx,pyy,pzz,pxy,pxz,pyz"
+
+run               5400000    # Target strain: 1.08
+
+# --- Cleanup deformation stage ---
+undump            dump_b
+unfix             stress_b
+unfix             shear
+unfix             thermo
