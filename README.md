@@ -73,10 +73,10 @@ Under the deliberately simplified simulation configuration employed here, differ
 
 where:
 
-- `ε_GB` denotes strain accommodated by the two grain boundaries
-- `ε_DL` denotes strain accommodated by the dislocation
-- `ε_e` denotes elastic strain
-- `ε_total` denotes the total applied strain
+- $ε_{GB}$ denotes strain accommodated by the two grain boundaries
+- $ε_{DL}$ denotes strain accommodated by the dislocation
+- $ε_e$ denotes elastic strain
+- $ε_{total}$ denotes the total applied strain
 
 The ASD data corresponding to different strain rates are provided in:
 
