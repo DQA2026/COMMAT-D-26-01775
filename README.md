@@ -14,15 +14,15 @@ The crystallographic orientations are defined as follows:
 
 ## Crystal A
 
-- `[110]` parallel to the global X-axis
-- `[1\bar{1}1]` parallel to the global Y-axis
-- `[1\bar{1}\bar{2}]` parallel to the global Z-axis
+- [110] parallel to the global X-axis
+- [1\bar{1}1] parallel to the global Y-axis
+- [1\bar{1}\bar{2}] parallel to the global Z-axis
 
 ## Crystal B
 
-- `[110]` parallel to the global X-axis
-- `[\bar{1}11]` parallel to the global Y-axis
-- `[1\bar{1}2]` parallel to the global Z-axis
+- [110] parallel to the global X-axis
+- [\bar{1}11] parallel to the global Y-axis
+- [1\bar{1}2] parallel to the global Z-axis
 
 ---
 
