@@ -93,7 +93,7 @@ This motion is illustrated in:
 - `DislocationInMotion.mp4`
 - `DislocationInMotionExplained.png`
 
-During deformation, the inserted full dislocation occasionally dissociates into two partial dislocations. Since the two partials remain spatially close throughout the simulation, their average `x` coordinate is used to evaluate the dislocation velocity.
+During deformation, the inserted full dislocation occasionally dissociates into two partial dislocations. Since the two partials remain spatially close throughout the simulation, their average $x$ coordinate is used to evaluate the dislocation velocity.
 
 The extracted velocity data are provided in:
 
