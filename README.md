@@ -14,15 +14,15 @@ The crystallographic orientations are defined as follows:
 
 ## Crystal A
 
-- $[110]$ parallel to the global X-axis
-- $[1\bar{1}1]$ parallel to the global Y-axis
-- $[1\bar{1}\bar{2}]$ parallel to the global Z-axis
+- $[110]$ parallel to the global $x$-axis
+- $[1\bar{1}1]$ parallel to the global $y$-axis
+- $[1\bar{1}\bar{2}]$ parallel to the global $z$-axis
 
 ## Crystal B
 
-- $[110]$ parallel to the global X-axis
-- $[\bar{1}11]$ parallel to the global Y-axis
-- $[1\bar{1}2]$ parallel to the global Z-axis
+- $[110]$ parallel to the global $x$-axis
+- $[\bar{1}11]$ parallel to the global $y$-axis
+- $[1\bar{1}2]$ parallel to the global $z$-axis
 
 ---
 
@@ -53,9 +53,7 @@ The calculated stress tensors are provided in the files:
 
 - `Stress_Strain_SRxxxx_T750.xls`
 
-The primary quantity analyzed in this work is the shear stress component:
-
-- `p_xy`
+The primary quantity analyzed in this work is the shear stress component $p_{xy}$.
 
 ---
 
