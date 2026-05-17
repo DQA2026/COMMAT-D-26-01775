@@ -3,7 +3,7 @@ Supplementary Materials for: Anomalous strain-rate enhancement of grain boundary
 
 ## Settings
 
-The input file (SimulationBox.dat) and the applied potential (Potential.alloy) are presented in this folder. To help track the essential elements discussed in the manuscript, an illustration of the model (SimulationBox.dat) is also attached.
+The input file (**SimulationBox.dat**) and the applied potential (**Potential.alloy**) are presented in this folder. To help track the essential elements discussed in the manuscript, an illustration of the model (**SimulationBox.dat**) is also attached.
 
 It is noteworthy that under periodic boundary conditions, the input file describes two crystals forming symmetric tilt GBs, with a single edge dislocation introduced at the centre of the box.
 
