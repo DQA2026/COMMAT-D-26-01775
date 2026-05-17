@@ -1,37 +1,111 @@
-# Supplementary Materials for: Anomalous strain-rate enhancement of grain boundary sliding triggered by phonon-drag-induced dislocation deficit
+# Supplementary Materials for  
+# *Anomalous strain-rate enhancement of grain boundary sliding triggered by phonon-drag-induced dislocation deficit*
 
-## 1. Settings
+---
 
-The input file (**SimulationBox.dat**) and the applied potential (**Potential.alloy**) are presented in this folder. To help track the essential elements discussed in the manuscript, an illustration of the model (**SimulationBox.dat**) is also attached.
+# 1. Simulation Setup
 
-It is noteworthy that under periodic boundary conditions, the input file describes two crystals forming symmetric tilt GBs, with a single edge dislocation introduced at the centre of the box.
+The simulation input file (`SimulationBox.dat`) and the employed interatomic potential (`Potential.alloy`) are provided in this repository. An illustration of the simulation model based on `SimulationBox.dat` is also included for reference.
 
-The crystal orientations are orchestrated such that, under periodic boundary conditions, the dislocation slips along a closed loop within its original crystal, ensuring that all accommodated strain is parallel to the applied shear stress. Specifically, in Crystal A, $[110]$ aligns with the global X-axis, $[1\bar{1}1]$ aligns with the Y-axis, and $[1\bar{1}\bar{2}]$ aligns with the Z-axis, while in Crystal B, $[110]$ aligns with the X-axis,  $[\bar{1}11]$  aligns with the Y-axis, and $[1\bar{1}2]$ aligns with the Z-axis.
+Under periodic boundary conditions, the simulation cell consists of two crystals forming symmetric tilt grain boundaries (GBs), with a single edge dislocation introduced at the center of the simulation box.
 
-## 2. Simulation
+The crystal orientations were specifically designed such that the dislocation moves along a closed loop within its original crystal under periodic boundary conditions. This construction ensures that all accommodated plastic strain remains parallel to the applied shear stress.
 
-The simulations were performed on LAMMPS. **Code.lammps** shows the key LAMMPS commands reorganized for better readability, where the strain rate and the temperature need specifying. The deformation was subjected to ultrahigh strain rates ranging from $2\times 10^8$ to $1\times 10^9 \text{ s}^{−1}$. To ensure numerical fidelity, the present simulations were performed at $750\text{ K}$. Please check the manuscript for more information.
+The crystallographic orientations are defined as follows:
 
-While the whole ensemble of raw data is too large to upload, we uploaded a representative case (**RepresentativeRawData.lammpstrj**) and a video demonstration (**DeformationDemo.mp4**) to help understand the precedure.
+## Crystal A
 
-## 3. Stress Extraction
+- `[110]` parallel to the global X-axis
+- `[1\bar{1}1]` parallel to the global Y-axis
+- `[1\bar{1}\bar{2}]` parallel to the global Z-axis
 
-The calculated stress tensors are presented here in a group of files **Stress_Strain_SRxxxx_T750.xls**.
+## Crystal B
 
-Please note that the shear stress $p_{xy}$ is of our interest.
+- `[110]` parallel to the global X-axis
+- `[\bar{1}11]` parallel to the global Y-axis
+- `[1\bar{1}2]` parallel to the global Z-axis
 
-## 4. ASD Analysis
+---
 
-The accumulated shear displacement (ASD) is defined as the integrated displacement along the shear direction $x$ and expressed as a function of the sample height $y$. This is the major variable throughout our analysis. 
+# 2. Molecular Dynamics Simulations
 
-In our deliberately minimal configuration, differentiation of the ASD directly yields the strain components: $ε_{GB}+ε_{DL}+ε_e=ε_total$, where $ε_{GB}$, $ε_{DL}$, $ε_e$ and $ε_{total}$ denote the strain accommodated by the two grain boundaries, the sole dislocation, elastic deformation, and the total strain, respectively.
+All simulations were performed using LAMMPS.
 
-The ASD function across various strain rates is presented in a group of files **ASD_SRxxxx_T750**. The code that implements the extraction (**Code.cpp**) involves a series of displacement sampling techniques and corner case discussions addressing issues arising from periodic boundary conditions.
+The file `Code.lammps` summarizes the key simulation commands reorganized for clarity and readability. The strain rate and temperature should be specified by the user before execution.
 
-## 5. Dislocation Tracking
+The simulations were conducted under ultrahigh strain rates ranging from
 
-Recall that the crystal orientations are orchestrated such that, under periodic boundary conditions, the dislocation slips along a closed loop within its original crystal. Such motion is demonstrated and explained in **DislocationInMotion.mp4** and **DislocationInMotionExplained.png**, respectively.
+- `2 × 10^8 s⁻¹`
+to
+- `1 × 10^9 s⁻¹`
 
-Please note that the inserted full dislocation sometimes splits into two partial dislocations. Since these partial dislocations remain very close to each other throughout the deformation, the average $x$ coordinate of them is extracted and used for velocity calculation (**DislocationVelocity_SRxxxx_T750**).
+To maintain numerical stability and fidelity, all simulations presented in this work were performed at `750 K`.
 
-Please also note that Ovito DXA occasionally misidentifies dislocations, e.g. the same dislocation appears multiple times. Nonetheless, it does not interfere with our data.
+Please refer to the manuscript for additional methodological details.
+
+Due to the large size of the complete raw dataset, only representative examples are included in this repository:
+
+- `RepresentativeRawData.lammpstrj`
+- `DeformationDemo.mp4`
+
+These files are intended to demonstrate the deformation process and data structure.
+
+---
+
+# 3. Stress Extraction
+
+The calculated stress tensors are provided in the files:
+
+- `Stress_Strain_SRxxxx_T750.xls`
+
+The primary quantity analyzed in this work is the shear stress component:
+
+- `p_xy`
+
+---
+
+# 4. ASD Analysis
+
+The accumulated shear displacement (ASD) is defined as the integrated displacement along the shear direction (`x`) expressed as a function of the sample height (`y`).
+
+ASD serves as the primary variable throughout the present analysis.
+
+Under the deliberately simplified simulation configuration employed here, differentiation of the ASD directly yields the strain partitioning relation:
+
+```math
+\varepsilon_{GB} + \varepsilon_{DL} + \varepsilon_e = \varepsilon_{total}
+```
+
+where:
+
+- `ε_GB` denotes strain accommodated by the two grain boundaries
+- `ε_DL` denotes strain accommodated by the dislocation
+- `ε_e` denotes elastic strain
+- `ε_total` denotes the total applied strain
+
+The ASD data corresponding to different strain rates are provided in:
+
+- `ASD_SRxxxx_T750`
+
+The extraction code (`Code.cpp`) implements the ASD analysis together with displacement sampling procedures and treatments for corner cases associated with periodic boundary conditions.
+
+---
+
+# 5. Dislocation Tracking
+
+As discussed above, the crystallographic orientations were intentionally designed such that the dislocation propagates along a closed loop within its original crystal under periodic boundary conditions.
+
+This motion is illustrated in:
+
+- `DislocationInMotion.mp4`
+- `DislocationInMotionExplained.png`
+
+During deformation, the inserted full dislocation occasionally dissociates into two partial dislocations. Since the two partials remain spatially close throughout the simulation, their average `x` coordinate is used to evaluate the dislocation velocity.
+
+The extracted velocity data are provided in:
+
+- `DislocationVelocity_SRxxxx_T750`
+
+Dislocation identification was performed using the OVITO DXA algorithm. Occasional duplicate identification of the same dislocation may occur under certain configurations; however, this does not affect the extracted velocity trends or the conclusions of the present work.
+
+---
