@@ -32,13 +32,9 @@ All simulations were performed using LAMMPS.
 
 The file `Code.lammps` summarizes the key simulation commands reorganized for clarity and readability. The strain rate and temperature should be specified by the user before execution.
 
-The simulations were conducted under ultrahigh strain rates ranging from
+The simulations were conducted under ultrahigh strain rates ranging from $2 \times 10^8 \text{ s}^{-1}$ to $1\times 10^9 \text{ s}^{-1}$.
 
-- `2 × 10^8 s⁻¹`
-to
-- `1 × 10^9 s⁻¹`
-
-To maintain numerical stability and fidelity, all simulations presented in this work were performed at `750 K`.
+To maintain numerical stability and fidelity, all simulations presented in this work were performed at $750\text{ K}$.
 
 Please refer to the manuscript for additional methodological details.
 
