@@ -38,10 +38,7 @@ To maintain numerical stability and fidelity, all simulations presented in this 
 
 Please refer to the manuscript for additional methodological details.
 
-Due to the large size of the complete raw dataset, only representative examples are included in this repository:
-
-- `RepresentativeRawData.lammpstrj`
-- `DeformationDemo.mp4`
+Due to the large size of the complete raw dataset, only representative examples are included in this repository `RepresentativeRawData.lammpstrj` and `DeformationDemo.mp4`.
 
 These files are intended to demonstrate the deformation process and data structure.
 
@@ -49,9 +46,7 @@ These files are intended to demonstrate the deformation process and data structu
 
 # 3. Stress Extraction
 
-The calculated stress tensors are provided in the files:
-
-- `Stress_Strain_SRxxxx_T750.xls`
+The calculated stress tensors are provided in the files `Stress_Strain_SRxxxx_T750.xls`.
 
 The primary quantity analyzed in this work is the shear stress component $p_{xy}$.
 
@@ -76,9 +71,7 @@ where:
 - $ε_e$ denotes elastic strain
 - $ε_{total}$ denotes the total applied strain
 
-The ASD data corresponding to different strain rates are provided in:
-
-- `ASD_SRxxxx_T750`
+The ASD data corresponding to different strain rates are provided in `ASD_SRxxxx_T750`.
 
 The extraction code (`Code.cpp`) implements the ASD analysis together with displacement sampling procedures and treatments for corner cases associated with periodic boundary conditions.
 
@@ -88,16 +81,11 @@ The extraction code (`Code.cpp`) implements the ASD analysis together with displ
 
 As discussed above, the crystallographic orientations were intentionally designed such that the dislocation propagates along a closed loop within its original crystal under periodic boundary conditions.
 
-This motion is illustrated in:
-
-- `DislocationInMotion.mp4`
-- `DislocationInMotionExplained.png`
+This motion is illustrated in: `DislocationInMotion.mp4` and `DislocationInMotionExplained.png`.
 
 During deformation, the inserted full dislocation occasionally dissociates into two partial dislocations. Since the two partials remain spatially close throughout the simulation, their average $x$ coordinate is used to evaluate the dislocation velocity.
 
-The extracted velocity data are provided in:
-
-- `DislocationVelocity_SRxxxx_T750`
+The extracted velocity data are provided in `DislocationVelocity_SRxxxx_T750`.
 
 Dislocation identification was performed using the OVITO DXA algorithm. Occasional duplicate identification of the same dislocation may occur under certain configurations; however, this does not affect the extracted velocity trends or the conclusions of the present work.
 
