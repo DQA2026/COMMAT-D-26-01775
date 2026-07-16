@@ -101,8 +101,6 @@ The datasets supporting the interpretation of the dislocation velocity plateau a
 
 Together, these datasets correspond to Fig. 5(a–h) of the manuscript.
 
----
-
 ## A. Geometry & Bulk Control
 
 This directory contains the control simulations used to examine whether the observed velocity plateau depends on the simulation geometry.
@@ -125,8 +123,6 @@ These datasets were used to evaluate the effects of:
 - simulation cell size,
 - and the presence or absence of grain boundaries.
 
----
-
 ## B1. Temperature Dependence
 
 The directory
@@ -140,8 +136,6 @@ The simulations were performed under identical loading conditions at different t
 For each temperature, the complete evolution of the shear stress and dislocation velocity, together with the resulting velocity–stress relation, is provided.
 
 These datasets support the temperature dependence discussed in the manuscript.
-
----
 
 ## B2. Phonon-Drag Criterion
 
