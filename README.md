@@ -90,3 +90,84 @@ The extracted velocity data are provided in `DislocationVelocity_SRxxxx_T750`.
 Dislocation identification was performed using the OVITO DXA algorithm. Occasional duplicate identification of the same dislocation may occur under certain configurations; however, this does not affect the extracted velocity trends or the conclusions of the present work.
 
 ---
+
+# 6. Plateau Interpretation
+
+The datasets supporting the interpretation of the dislocation velocity plateau are organized into three categories:
+
+- `A-Geometry&BulkControl`
+- `B1-TemperatureDependence`
+- `B2-PhononDragCriterion`
+
+Together, these datasets correspond to Fig. 5(a–h) of the manuscript.
+
+---
+
+## A. Geometry & Bulk Control
+
+This directory contains the control simulations used to examine whether the observed velocity plateau depends on the simulation geometry.
+
+The datasets are organized as follows:
+
+- `Fig5a-GB–DislocationDistance`
+- `Fig5b-AspectRatio`
+- `Fig5c-BoxSize`
+- `Fig5d-BulkControl`
+
+Each directory contains the source data used to construct the corresponding panel in Fig. 5.
+
+For every simulation, the evolution of the shear stress and dislocation velocity, together with the resulting velocity–stress relation, is provided.
+
+These datasets were used to evaluate the effects of:
+
+- dislocation–GB distance,
+- simulation cell aspect ratio,
+- simulation cell size,
+- and the presence or absence of grain boundaries.
+
+---
+
+## B1. Temperature Dependence
+
+The directory
+
+`Fig5e-TemperatureDependence`
+
+contains the datasets corresponding to Fig. 5(e).
+
+The simulations were performed under identical loading conditions at different temperatures.
+
+For each temperature, the complete evolution of the shear stress and dislocation velocity, together with the resulting velocity–stress relation, is provided.
+
+These datasets support the temperature dependence discussed in the manuscript.
+
+---
+
+## B2. Phonon-Drag Criterion
+
+The directory
+
+`Fig5f-h-PhononDragCriterion`
+
+contains the datasets supporting Fig. 5(f–h).
+
+The representative simulations shown in Fig. 5(f) and Fig. 5(g) are included together with the complete collection of simulations performed under different combinations of dislocation density and strain rate.
+
+For every simulation, the following information is provided:
+
+- strain rate,
+- dislocation density,
+- shear stress,
+- dislocation velocity,
+- identified deformation regime.
+
+The deformation regime is classified as either
+
+- **Classical Forest-Hardening**, or
+- **Phonon-Drag-Controlled**,
+
+according to the criterion proposed by Fan *et al.* [22].
+
+These datasets allow direct inspection of the complete parameter space beyond the representative cases presented in the manuscript.
+
+---
